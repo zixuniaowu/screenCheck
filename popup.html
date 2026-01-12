@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule Diff Checker</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 320px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+    }
+
+    h1 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #4CAF50;
+    }
+
+    .section {
+      background: white;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 8px;
+    }
+
+    .btn:last-child {
+      margin-bottom: 0;
+    }
+
+    .btn-primary {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #45a049;
+    }
+
+    .btn-secondary {
+      background: #2196F3;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #1976D2;
+    }
+
+    .btn-warning {
+      background: #FF9800;
+      color: white;
+    }
+
+    .btn-warning:hover {
+      background: #F57C00;
+    }
+
+    .btn-danger {
+      background: #f44336;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #d32f2f;
+    }
+
+    .status {
+      font-size: 12px;
+      color: #666;
+      padding: 8px;
+      background: #f9f9f9;
+      border-radius: 4px;
+      margin-top: 8px;
+    }
+
+    .status.has-data {
+      color: #4CAF50;
+      background: #E8F5E9;
+    }
+
+    .status.no-data {
+      color: #999;
+    }
+
+    .diff-result {
+      margin-top: 12px;
+      padding: 12px;
+      background: #FFF3E0;
+      border-radius: 6px;
+      font-size: 13px;
+      display: none;
+    }
+
+    .diff-result.show {
+      display: block;
+    }
+
+    .diff-result.has-diff {
+      background: #FFEBEE;
+      border-left: 3px solid #f44336;
+    }
+
+    .diff-result.no-diff {
+      background: #E8F5E9;
+      border-left: 3px solid #4CAF50;
+    }
+
+    .diff-count {
+      font-size: 24px;
+      font-weight: bold;
+      color: #f44336;
+    }
+
+    .diff-list {
+      max-height: 150px;
+      overflow-y: auto;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    .diff-item {
+      padding: 4px 8px;
+      background: white;
+      margin-bottom: 4px;
+      border-radius: 4px;
+    }
+
+    .snapshot-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #999;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 Schedule Diff Checker</h1>
+
+  <div class="section">
+    <div class="section-title">快照 A（基准）</div>
+    <button class="btn btn-primary" id="saveSnapshotA">💾 保存快照 A</button>
+    <div class="status no-data" id="statusA">未保存</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">快照 B（对比）</div>
+    <button class="btn btn-secondary" id="saveSnapshotB">💾 保存快照 B</button>
+    <div class="status no-data" id="statusB">未保存</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">差分对比</div>
+    <button class="btn btn-warning" id="compareDiff">🔍 对比差异</button>
+    <button class="btn btn-danger" id="clearHighlight">✖ 清除高亮</button>
+  </div>
+
+  <div class="diff-result" id="diffResult">
+    <div>发现 <span class="diff-count" id="diffCount">0</span> 处差异</div>
+    <div class="diff-list" id="diffList"></div>
+  </div>
+
+  <div class="section">
+    <button class="btn" style="background:#9E9E9E;color:white;" id="clearAll">🗑 清除所有数据</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

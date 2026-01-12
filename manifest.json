@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Schedule Diff Checker",
+  "version": "1.0.0",
+  "description": "甘特图/调度表差分检测工具，高亮显示变化",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Schedule Diff Checker"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ]
+}

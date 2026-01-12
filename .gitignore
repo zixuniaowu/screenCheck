@@ -1,0 +1,15 @@
+# 图片文件（测试用的截图）
+*.JPG
+*.jpg
+*.png
+*.gif
+
+# 系统文件
+.DS_Store
+Thumbs.db
+nul
+
+# IDE
+.idea/
+.vscode/
+*.swp
