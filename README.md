@@ -86,5 +86,5 @@ screenCheck/
 ├── popup.js            # 界面逻辑
 ├── content.js          # 数据提取脚本
 ├── content.css         # 高亮样式
-└── 安装测试说明.md      # 本说明文档
+└── README.md           # 本说明文档
 ```
