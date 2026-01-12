@@ -2,13 +2,13 @@
 
 甘特图/调度表差分检测工具，用于对比页面变化并高亮显示差异。
 
-## 一、插件文件位置
+## 一、获取插件
 
-```
-C:\Users\zixun\dev\screenCheck
+```bash
+git clone https://github.com/zixuniaowu/screenCheck.git
 ```
 
-需要把整个 `screenCheck` 文件夹复制到测试电脑上。
+或直接下载 ZIP：https://github.com/zixuniaowu/screenCheck/archive/refs/heads/main.zip
 
 ---
 
